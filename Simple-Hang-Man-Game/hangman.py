@@ -12,20 +12,16 @@ from random import randint
 
 class HangManGame:
 
-    easy_word_list = ["apple","like","eye","love","list","blue","read","time","test","reach",
-                      "tree","open","know","pop","move","silly","back","dream","lost","make"]
-
-    moderate_word_list = ["enhance","reclaim","result","define","repeat","treaty","perceive","astronomy","medicine",
-                          "sanitize","arrange","excite","enlist","moderate","accept","intent","pencil","delete",
-                          "manage","release"]
-
-    hard_word_list = ["precocious","propensity","nonsecular","verbose","engagement","redaction","admittance",
-                      "entangle","remorse","esoteric","rejected","personification","entertainment","synchronization",
-                      "indelible","supererogatory","facetious","incongrous","predilection","entitlement"]
-
-    def __init__(self,difficutly):
-
-        self.__difficulty = difficutly
+    def __init__(self):
+        self.__difficulty = 0
+        self.easy_word_list = ["apple","like","eye","love","list","blue","read","time","test","reach",
+                          "tree","open","know","pop","move","silly","back","dream","lost","make"]
+        self.moderate_word_list = ["enhance","reclaim","result","define","repeat","treaty","perceive","astronomy","medicine",
+                              "sanitize","arrange","excite","enlist","moderate","accept","intent","pencil","delete",
+                              "manage","release"]
+        self.hard_word_list = ["precocious","propensity","nonsecular","verbose","engagement","redaction","admittance",
+                          "entangle","remorse","esoteric","rejected","personification","entertainment","synchronization",
+                          "indelible","supererogatory","facetious","incongrous","predilection","entitlement"]
     def __set_difficulty(self):
 
         self.__difficulty = input("Enter difficulty level (1-3): ")             # Set difficulty from user prompt
@@ -64,7 +60,7 @@ class HangManGame:
              sys.stdout.write(".")
              sys.stdout.flush()
         print("\n"*2)
-    def __check_guess(word):
+    def __check_guess(self,word):
 
         bkword = ["_"]*len(word)                                            # Initialize broken word list
         players_guess = ""                                                  # Initialize players guess
@@ -109,15 +105,8 @@ class HangManGame:
     def play_game(self):
 
         # Initialize Game
-        self.__set_difficulty(self)                        # Set Difficulty Level
-        self.__set_welcome(self)                           # Instructions and welcome message
-        word = self.__select_word(self)                    # Requests word according to difficulty level and stores
-        self.__loading_ani(self)                           # Displays loading animation
+        self.__set_difficulty()                        # Set Difficulty Level
+        self.__set_welcome()                           # Instructions and welcome message
+        word = self.__select_word()                    # Requests word according to difficulty level and stores
+        self.__loading_ani()                           # Displays loading animation
         self.__check_guess(word)
-
-
-
-
-
-
-
